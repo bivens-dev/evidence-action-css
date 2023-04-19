@@ -1,0 +1,125 @@
+/* 
+  Lets start by creating a series of our own project specific CSS 
+  custom properties taking advantage of Open Props where it makes sense.
+  These will end up being our "center of the universe" in a lot of ways.
+
+  Using a :root selector here so they are global in scope and allow us to 
+  use them in Web Components in the future where it can otherwise be difficult
+  to share CSS styles due to how the ShadowDOM works.
+
+  Side Note: I'm not doing it here and I don't think Evidence Action will ask for it
+  but if you want to set up light / dark modes you can do one very simple layer of 
+  indirection here. Take a look where it says Color Theming 101 here https://open-props.style/#colors
+*/
+:root {
+  /* Evidence Brand Colors */
+  --ea-brand-color-dark-pink: rgb(181, 87, 92);
+  --ea-brand-color-light-pink: rgb(254, 111, 135);
+  --ea-brand-color-dark-gray: var(--gray-9);
+  --ea-brand-color-light-gray: var(--gray-3);
+  --ea-brand-color-off-white: var(--gray-1);
+  --ea-brand-color-black: var(--gray-12);
+
+  /* Evidence Action Brand Font Stacks*/
+  --ea-brand-font-serif: prensa, georgia, ui-serif, serif;
+  --ea-brand-font-sans-serif: t-star mono,droid sans mono, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  --ea-brand-font-monospace: var(--font-mono);
+
+  /* Any other magic numbers and values can go here too */
+  --readability-max-line-length: 75ch; /* Source: https://baymard.com/blog/line-length-readability */
+}
+
+/* 
+  Now we can start to build out the basic components of an Evidence Action Design System 
+  as a series of simple CSS classes that we can reference in our HTML.
+*/
+
+/* Design System: Typography */
+.display-large {
+  font-family: var(--ea-brand-font-serif);
+  font-size: var(--font-size-8);
+  line-height: var(--font-lineheight-3);
+  letter-spacing: var(--font-letterspacing-2);
+  font-weight: var(--font-weight-8);
+}
+
+.display-medium {
+  font-family: var(--ea-brand-font-serif);
+  font-size: var(--font-size-7);
+  line-height: var(--font-lineheight-3);
+  letter-spacing: var(--font-letterspacing-2);
+  font-weight: var(--font-weight-8);
+}
+
+.display-small {
+  font-family: var(--ea-brand-font-serif);
+  font-size: var(--font-size-6);
+  line-height: var(--font-lineheight-3);
+  letter-spacing: var(--font-letterspacing-2);
+  font-weight: var(--font-weight-8);
+}
+
+.headline-large {
+  font-family: var(--ea-brand-font-sans-serif);
+  font-size: var(--font-size-8);
+  line-height: var(--font-lineheight-3);
+  letter-spacing: var(--font-letterspacing-2);
+  font-weight: var(--font-weight-5);
+}
+
+.headline-medium {
+  font-family: var(--ea-brand-font-sans-serif);
+  font-size: var(--font-size-7);
+  line-height: var(--font-lineheight-3);
+  letter-spacing: var(--font-letterspacing-2);
+  font-weight: var(--font-weight-5);
+}
+
+.headline-small {
+  font-family: var(--ea-brand-font-sans-serif);
+  font-size: var(--font-size-6);
+  line-height: var(--font-lineheight-3);
+  letter-spacing: var(--font-letterspacing-2);
+  font-weight: var(--font-weight-5);
+}
+
+.body-large {
+  font-family: var(--ea-brand-font-serif);
+  font-size: var(--font-size-5);
+  line-height: var(--font-lineheight-2);
+  letter-spacing: var(--font-letterspacing-1);
+  font-weight: var(--font-weight-4);
+}
+
+.body-medium {
+  font-family: var(--ea-brand-font-serif);
+  font-size: var(--font-size-4);
+  line-height: var(--font-lineheight-2);
+  letter-spacing: var(--font-letterspacing-1);
+  font-weight: var(--font-weight-4);
+}
+
+.body-small {
+  font-family: var(--ea-brand-font-serif);
+  font-size: var(--font-size-3);
+  line-height: var(--font-lineheight-2);
+  letter-spacing: var(--font-letterspacing-1);
+  font-weight: var(--font-weight-4);
+}
+
+/* Design System: Content Surfaces */
+
+.surface-one {
+  background-color: var(--ea-brand-color-off-white);
+  color: var(--ea-brand-color-black);
+}
+
+.surface-one-inverse {
+  background-color: var(--ea-brand-color-black);
+  color: var(--ea-brand-color-off-white);
+}
+
+.surface-two {
+  background-color: var(--ea-brand-color-dark-pink);
+  color: var(--ea-brand-color-off-white);
+}

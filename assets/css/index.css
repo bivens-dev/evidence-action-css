@@ -1,0 +1,29 @@
+/* 
+  Open Props is a project from one of the members of the 
+  Google Chrome developer relations team that is conceptually 
+  similar to Tailwind but has a slightly different focus on
+  using CSS custom properties rather than CSS classes. Due to 
+  that small change you end up picking up a lot of benefits at 
+  both a performance and code maintanence level. Check out the 
+  website at https://open-props.style/ to take a look at the docs.
+  
+  The following import is 4kB and gives us more than 500 tokens 
+  covering things like colors, spacing, typography, shadows etc.. 
+  Important to note that these are ONLY custom properties this import
+  does not include any styles or classes to use so we are still starting
+  with what is essentially a blank slate.
+*/
+@import "https://unpkg.com/open-props" layer(open-props);
+
+/* 
+  We can then create a baseline "Design System" to build on top of.
+  This is where we would capture all of the shared styles essentially.
+*/
+
+@import url(design-system.css) layer(design-system);
+
+/* 
+  Now we can create a series of component specific styles
+*/
+
+@import url(components.css) layer(components);
