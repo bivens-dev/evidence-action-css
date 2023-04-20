@@ -1,12 +1,12 @@
 /* Custom Font Face Declarations */
 @font-face {
   font-family: "prensa";
-  src: url("/assets/fonts/serif-font.woff2") format("woff2");
+  src: url("../fonts/serif-font.woff2") format("woff2");
 }
 
-@font-face {-
+@font-face {
   font-family: "t-star mono";
-  src: url("/assets/fonts/sans-serif-font.woff2") format("woff2");
+  src: url("../fonts/sans-serif-font.woff2") format("woff2");
 }
 
 /* 
@@ -25,7 +25,7 @@
 :root {
   /* Evidence Action Brand Font Stacks*/
   --ea-brand-font-serif: prensa, georgia, ui-serif, serif;
-  --ea-brand-font-sans-serif: t-star mono,droid sans mono, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  --ea-brand-font-sans-serif: t-star mono, droid sans mono, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
 
   /* Evidence Brand Colors */
   --ea-brand-color-pink: rgb(181, 87, 92);
