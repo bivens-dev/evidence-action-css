@@ -12,6 +12,11 @@
   Important to note that these are ONLY custom properties this import
   does not include any styles or classes to use so we are still starting
   with what is essentially a blank slate.
+
+  Also if you haven't used layers before they help make simplify CSS 
+  architecture quite a bit by providing a consistent order of precedence
+  regardless of what order the browser parses the CSS.
+  https://developer.mozilla.org/en-US/docs/Web/CSS/@layer
 */
 @import "https://unpkg.com/open-props" layer(open-props);
 

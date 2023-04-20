@@ -1,3 +1,14 @@
+/* Custom Font Face Declarations */
+@font-face {
+  font-family: "prensa";
+  src: url("/assets/fonts/serif-font.woff2") format("woff2");
+}
+
+@font-face {-
+  font-family: "t-star mono";
+  src: url("/assets/fonts/sans-serif-font.woff2") format("woff2");
+}
+
 /* 
   Lets start by creating a series of our own project specific CSS 
   custom properties taking advantage of Open Props where it makes sense.
@@ -12,18 +23,33 @@
   indirection here. Take a look where it says Color Theming 101 here https://open-props.style/#colors
 */
 :root {
-  /* Evidence Brand Colors */
-  --ea-brand-color-dark-pink: rgb(181, 87, 92);
-  --ea-brand-color-light-pink: rgb(254, 111, 135);
-  --ea-brand-color-dark-gray: var(--gray-9);
-  --ea-brand-color-light-gray: var(--gray-3);
-  --ea-brand-color-off-white: var(--gray-1);
-  --ea-brand-color-black: var(--gray-12);
-
   /* Evidence Action Brand Font Stacks*/
   --ea-brand-font-serif: prensa, georgia, ui-serif, serif;
   --ea-brand-font-sans-serif: t-star mono,droid sans mono, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-  --ea-brand-font-monospace: var(--font-mono);
+
+  /* Evidence Brand Colors */
+  --ea-brand-color-pink: rgb(181, 87, 92);
+  
+  /* 
+    Lets use the brand color to build a simple color palette using a cool trick
+    from modern CSS (and pollyfilled through PostCSS for older browsers)
+    Source: https://una.im/color-mix-opacity/
+  */
+  --ea-brand-color-pink-10: color-mix(in srgb, var(--ea-brand-color-pink), transparent 90%);
+  --ea-brand-color-pink-20: color-mix(in srgb, var(--ea-brand-color-pink), transparent 80%);
+  --ea-brand-color-pink-30: color-mix(in srgb, var(--ea-brand-color-pink), transparent 70%);
+  --ea-brand-color-pink-40: color-mix(in srgb, var(--ea-brand-color-pink), transparent 60%);
+  --ea-brand-color-pink-50: color-mix(in srgb, var(--ea-brand-color-pink), transparent 50%);
+  --ea-brand-color-pink-60: color-mix(in srgb, var(--ea-brand-color-pink), transparent 40%);
+  --ea-brand-color-pink-70: color-mix(in srgb, var(--ea-brand-color-pink), transparent 30%);
+  --ea-brand-color-pink-80: color-mix(in srgb, var(--ea-brand-color-pink), transparent 20%);
+  --ea-brand-color-pink-90: color-mix(in srgb, var(--ea-brand-color-pink), transparent 10%);
+
+  /* Let's take other key colors we know we will need and give them a light brand color infusion */
+  --ea-brand-color-white: color-mix(in srgb, white, var(--ea-brand-color-pink) 10%);
+  --ea-brand-color-black: color-mix(in srgb, black, var(--ea-brand-color-pink) 10%);
+  --ea-brand-color-dark-gray: color-mix(in srgb, var(--gray-9), var(--ea-brand-color-pink) 10%);
+  --ea-brand-color-light-gray: color-mix(in srgb, var(--gray-3), var(--ea-brand-color-pink) 10%);
 
   /* Any other magic numbers and values can go here too */
   --readability-max-line-length: 75ch; /* Source: https://baymard.com/blog/line-length-readability */
@@ -110,16 +136,16 @@
 /* Design System: Content Surfaces */
 
 .surface-one {
-  background-color: var(--ea-brand-color-off-white);
+  background-color: var(--ea-brand-color-white);
   color: var(--ea-brand-color-black);
 }
 
 .surface-one-inverse {
   background-color: var(--ea-brand-color-black);
-  color: var(--ea-brand-color-off-white);
+  color: var(--ea-brand-color-white);
 }
 
 .surface-two {
-  background-color: var(--ea-brand-color-dark-pink);
-  color: var(--ea-brand-color-off-white);
+  background-color: var(--ea-brand-color-pink-90);
+  color: var(--ea-brand-color-white);
 }
