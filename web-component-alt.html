@@ -1,0 +1,143 @@
+<!-- 
+
+  NOTE: This page shows an alternative implementation using the browser's 
+  built-in component model (Web Components). If you haven't used Web Components
+  before it's actually a kind of large topic and depending on how you use 
+  them can have some sharp edges. However, the approach shown here removes the 
+  most common ones and in practice is almost identical both for the HTML and 
+  the CSS. 
+
+  This approach doesn't require any JavaScipt to display on any of our target 
+  browsers except Firefox which still hasn't implemented the standard but as 
+  you can see at the bottom of the page the polyfill is about as basic as it gets 
+  and isn't really a factor.
+
+  The other thing you will notice here is a 3 line bit of boilerplate that looks like:
+
+  <template shadowrootmode="open">
+    <slot></slot>
+  </template>
+
+  That is what allows us to opt-out of most of the sharp edges but also means we miss
+  out on most of the benefits as well unfortunately making this approach a bit harder 
+  to justify for components that don't actually need JavaScript at all. It would however 
+  allow a consistent component model to be used across the entire website which might 
+  have some appeal regardless of if the component required JavaScript functionality or not. 
+  It's entirely up to you obviously I just wanted to show it as one potential path 
+  you might want to consider.
+
+  If you have 90 mins to kill and have a curiosity to learn more this is a decent on-ramp
+  introduction to the topic that assumes no background knowledge but only if you feel 
+  like it obviously ;) https://www.youtube.com/watch?v=Sq5oiHjwFxI
+  
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidence Action: CSS Architecture Concept</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <meta name="robots" content="noindex">
+  </head>
+  <body class="surface-one body-medium">
+    <!-- Start Safe Water Program -->
+    <program-overview data-program-name="Dispensers for Safe Water">
+      <template shadowrootmode="open">
+        <slot></slot>
+      </template>
+      <section>
+        <picture data-component-section="hero-image">
+          <img src="./assets/images/DSW_children-by-dispenser_thumbs-up.webp" width="1200" alt="Two children standing by a clean water dispenser">
+        </picture>
+        <img data-component-section="icon" src="./assets/images/drop-01-2.svg" height="200" alt="Water drop icon">
+        <div data-component-section="intro-text">
+          <h3 class="headline-medium">Dispensers for Safe Water</h3>
+          <p>
+            An estimated 525,000 children under five die from diarrhea each year, often due to unsafe water. 
+            Our chlorine dispensers are installed directly next to untreated water sources, allowing residents 
+            to add a precise dose of diluted chlorine to their jerrican before filling it with water. 
+            At a cost of less than $1.50 per person per year, Dispensers for Safe Water is an innovative 
+            and cost-effective approach to the challenge of unsafe water in poor, rural areas.
+          </p>
+          <div data-component-section="cta">
+            <a href="#" data-component-name="link-button" class="surface-two body-small">Learn More</a>
+            <a href="#" data-component-name="link-button" class="surface-two body-small">Give</a>
+          </div>
+        </div>
+      </section>
+    </program-overview>
+
+    <!-- Start Deworming Program -->
+    <program-overview data-program-name="Deworm the World Initiative">
+      <template shadowrootmode="open">
+        <slot></slot>
+      </template>
+      <section>
+        <picture data-component-section="hero-image">
+          <img src="./assets/images/india1.webp" width="1200" alt="A group of Children holding deworming tablets">
+        </picture>
+        <img data-component-section="icon" src="./assets/images/worm-01-1.svg" height="200" alt="Worm Icon">
+        <div data-component-section="intro-text">
+          <h3 class="headline-medium">Deworm the World Initiative</h3>
+          <p>
+            More than 835 million preschool- and school-age children are at risk of parasitic worm infection. 
+            The Deworm the World Initiative partners with governments to develop and implement national, 
+            school-based deworming programs. We have supported delivery of over 1.8 billion deworming treatments 
+            since 2014 at an average cost of less than USD $0.50 per treatment, with measurable improvements 
+            in health, economic, and educational outcomes.
+          </p>
+          <div data-component-section="cta">
+            <a href="#" data-component-name="link-button" class="surface-two body-small">Learn More</a>
+            <a href="#" data-component-name="link-button" class="surface-two body-small">Give</a>
+          </div>
+        </div>
+      </section>
+    </program-overview>
+
+    <!-- Start Accelerator Program -->
+    <program-overview data-program-name="Evidence Action Accelerator">
+      <template shadowrootmode="open">
+        <slot></slot>
+      </template>
+      <section>
+        <picture data-component-section="hero-image">
+          <img src="./assets/images/Teacher-Children-scaled.webp" width="1200" alt="Teachers from India with their young students">
+        </picture>
+        <img data-component-section="icon" src="./assets/images/accelerator-01-1.svg" height="200" alt="Rocket Icon">
+        <div data-component-section="intro-text">
+          <h3 class="headline-medium">Evidence Action Accelerator</h3>
+          <p>
+            Our engine for new program development <em>the Accelerator</em> selects, optimizes, and scales interventions 
+            that can measurably improve the lives of millions of people in the world's poorest places. Through a 
+            rigorous process, interventions are evaluated so that only those with the greatest potential for 
+            cost-effective impact are scaled up. Interventions like syphilis screening and treatment for pregnant 
+            women, iron and acid supplementation, and in-line chlorination are being implemented and 
+            tested through our Accelerator process.
+          </p>
+          <div data-component-section="cta">
+            <a href="#" data-component-name="link-button" class="surface-two body-small">Learn More</a>
+            <a href="#" data-component-name="link-button" class="surface-two body-small">Give</a>
+          </div>
+        </div>
+      </section>
+    </program-overview>
+
+    <script type="module">
+      // This makes WebComponents work across browsers that don't natively support 
+      // the 'declaratie shadow DOM' standard. (i.e. Firefox)
+      if (!HTMLTemplateElement.prototype.hasOwnProperty('shadowRootMode')) {
+        (function attachShadowRoots(root) {
+          root.querySelectorAll("template[shadowrootmode]").forEach(template => {
+            const mode = template.getAttribute("shadowrootmode");
+            const shadowRoot = template.parentNode.attachShadow({ mode });
+            shadowRoot.appendChild(template.content);
+            template.remove();
+            attachShadowRoots(shadowRoot);
+          });
+        })(document);
+      }
+    </script>
+  </body>
+</html>

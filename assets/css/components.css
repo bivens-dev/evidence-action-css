@@ -49,3 +49,40 @@
     justify-content: center;
   }
 }
+
+program-overview {
+  & section:first-of-type {
+    text-align: center;
+    padding-block-end: var(--size-5);
+  }
+
+  & [data-component-section="hero-image"]{
+    display: block;
+
+    & img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: contain;
+    }
+  }
+
+  & [data-component-section="icon"]{
+    margin-block-start: -100px;
+  }
+
+  & [data-component-section="intro-text"]{
+    max-width: var(--readability-max-line-length);
+    margin: 0 auto;
+
+    & h3 {
+      color: var(--ea-brand-color-pink);
+    }
+  }
+
+  & [data-component-section="cta"] {
+    padding-block-start: var(--size-5);
+    display: flex;
+    gap: var(--size-7);
+    justify-content: center;
+  }
+}
